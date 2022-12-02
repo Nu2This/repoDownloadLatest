@@ -1,8 +1,8 @@
 #!/bin/bash
 
 
-#GITHUB_API=$(curl -s https://api.github.com/repos/logseq/logseq/releases/latest)
-#echo $GITHUB_API > api.json
+GITHUB_API=$(curl -s https://api.github.com/repos/logseq/logseq/releases/latest)
+echo $GITHUB_API > api.json
 DOWNLOAD_URL=$(cat ./api.json | jq -r '.assets[] | select(.name|match("AppImage$")) | .browser_download_url')
 FILE_NAME=$(cat ./api.json | jq -r '.assets[] | select(.name|match("AppImage$")) | .name')
 DIR="/home/mheide/Programs"
